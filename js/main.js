@@ -7,8 +7,9 @@ var stopButt = document.getElementById("stop-button");
 var radius = 50;
 var requestID;
 
+var expand = true;
+
 var circleanimation = function() {
-    var expand = true;
     stopit();
 
     var drawcircle = function() {
