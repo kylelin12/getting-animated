@@ -8,15 +8,17 @@ var radius = 50;
 var requestID;
 
 var expand = true;
+var opacitychange = true;
 
 var circleanimation = function() {
     stopit();
 
     var drawcircle = function() {
         ctx.beginPath();
-        ctx.clearRect(0, 0, 900, 900);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.arc(canvas.width / 2, canvas.height / 2, radius, 0, 2 * Math.PI);
         changeradius();
+        ctx.fillStyle = "rgba(0, 0, 0, " + genopacity() +")";
         ctx.fill();
     };
 
@@ -34,6 +36,10 @@ var circleanimation = function() {
         }
         console.log(requestID);
         requestID = window.requestAnimationFrame(drawcircle);
+    };
+
+    var genopacity = function() {
+        return radius / 450;
     };
 
     drawcircle();
