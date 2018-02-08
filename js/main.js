@@ -13,6 +13,11 @@ var expand = true;
 var opacityChange = true;
 
 var typeToggle = 0;
+var xCor = 0;
+var yCor = 0;
+
+var xVelocity = 13;
+var yVelocity = 17;
 
 var circleAnimation = function() {
     stopIt();
@@ -57,12 +62,6 @@ var dvdAnimation = function() {
 
     var wDis = 93;
     var hDis = 48;
-
-    var xVelocity = 13;
-    var yVelocity = 17;
-
-    var xCor = 0;
-    var yCor = 0;
 
     var drawDVD = function() {
         for (var i = 0; i < 1; i++) {
@@ -110,6 +109,7 @@ var stopIt = function() {
 
 var toggleIt = function() {
     stopIt();
+    clearIt();
     switch(typeToggle) {
         case 0: // Circle
             typeToggle = 1;
@@ -118,7 +118,6 @@ var toggleIt = function() {
             typeToggle = 0;
             break;
     }
-    clearIt();
     startIt();
 }
 
