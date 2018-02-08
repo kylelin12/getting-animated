@@ -4,6 +4,7 @@ var ctx = canvas.getContext("2d");
 var startButt = document.getElementById("start-button");
 var stopButt = document.getElementById("stop-button");
 var toggleButt = document.getElementById("toggle-type-button");
+var restartButt = document.getElementById("restart-button");
 
 var radius = 50;
 var requestID;
@@ -16,8 +17,8 @@ var typeToggle = 0;
 var xCor = 0;
 var yCor = 0;
 
-var xVelocity = 13;
-var yVelocity = 17;
+var xVelocity = 4;
+var yVelocity = 3;
 
 var circleAnimation = function() {
     stopIt();
@@ -61,7 +62,7 @@ var dvdAnimation = function() {
     stopIt();
 
     var wDis = 93;
-    var hDis = 48;
+    var hDis = 56;
 
     var drawDVD = function() {
         for (var i = 0; i < 1; i++) {
@@ -132,9 +133,24 @@ var startIt = function() {
     }
 };
 
+var restartIt = function() {
+    switch(typeToggle) {
+        case 0:
+            radius = 50;
+            break;
+        case 1:
+            xCor = 0;
+            yCor = 0;
+            xVelocity = 4;
+            yVelocity = 3;
+            break;
+    }
+};
+
 startButt.addEventListener('click', startIt, true);
 stopButt.addEventListener('click', stopIt, true);
 toggleButt.addEventListener('click', toggleIt, true);
+restartButt.addEventListener('click', restartIt, true);
 canvas.addEventListener('click', startIt, true);
 
 startIt();
