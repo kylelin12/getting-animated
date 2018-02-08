@@ -8,21 +8,21 @@ var radius = 50;
 var requestID;
 
 var expand = true;
-var opacitychange = true;
+var opacityChange = true;
 
-var circleanimation = function() {
-    stopit();
+var circleAnimation = function() {
+    stopIt();
 
-    var drawcircle = function() {
+    var drawCircle = function() {
         ctx.beginPath();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.arc(canvas.width / 2, canvas.height / 2, radius, 0, 2 * Math.PI);
-        changeradius();
-        ctx.fillStyle = "rgba(0, 0, 0, " + genopacity() +")";
+        changeRadius();
+        ctx.fillStyle = "rgba(0, 0, 0, " + genOpacity() +")";
         ctx.fill();
     };
 
-    var changeradius = function() {
+    var changeRadius = function() {
         if (expand == true) {
             radius++;
             if (radius > 450) {
@@ -35,26 +35,26 @@ var circleanimation = function() {
             }
         }
         console.log(requestID);
-        requestID = window.requestAnimationFrame(drawcircle);
+        requestID = window.requestAnimationFrame(drawCircle);
     };
 
-    var genopacity = function() {
+    var genOpacity = function() {
         return radius / 450;
     };
 
-    drawcircle();
+    drawCircle();
 };
 
-var stopit = function() {
+var stopIt = function() {
     window.cancelAnimationFrame(requestID);
 };
 
-var startit = function() {
-    requestID = window.requestAnimationFrame(circleanimation);
+var startIt = function() {
+    requestID = window.requestAnimationFrame(circleAnimation);
 };
 
-startButt.addEventListener('click', startit, true);
-stopButt.addEventListener('click', stopit, true);
-canvas.addEventListener('click', startit, true);
+startButt.addEventListener('click', startIt, true);
+stopButt.addEventListener('click', stopIt, true);
+canvas.addEventListener('click', startIt, true);
 
-startit();
+startIt();
