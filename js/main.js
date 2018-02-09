@@ -1,6 +1,8 @@
 var canvas = document.getElementById("canvas-one");
 var ctx = canvas.getContext("2d");
 
+var dvdLogo = document.getElementById("dvd-logo");
+
 var startButt = document.getElementById("start-button");
 var stopButt = document.getElementById("stop-button");
 var toggleButt = document.getElementById("toggle-type-button");
@@ -9,11 +11,14 @@ var restartButt = document.getElementById("restart-button");
 var radius = 50;
 var requestID;
 
+var typeToggle = 0; // 0-Circle : 1-DVD Screensaver
+
 // Circles
 var expand = true;
 var opacityChange = true;
 
-var typeToggle = 0;
+// DVD Screensaver
+
 var xCor = 0;
 var yCor = 0;
 
@@ -62,7 +67,7 @@ var dvdAnimation = function() {
     stopIt();
 
     var wDis = 93;
-    var hDis = 56;
+    var hDis = 45;
 
     var drawDVD = function() {
         for (var i = 0; i < 1; i++) {
@@ -86,7 +91,8 @@ var dvdAnimation = function() {
         clearIt();
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "#00AEEF";
-        ctx.fillRect(xCor, yCor, wDis, hDis);
+        //ctx.fillRect(xCor, yCor, wDis, hDis);
+        ctx.drawImage(dvdLogo, xCor, yCor, wDis, hDis);
 
         requestID = requestAnimationFrame(drawDVD);
     }
